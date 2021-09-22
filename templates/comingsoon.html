@@ -1,14 +1,26 @@
 {% extends 'base.html' %}
 {% block title %}
-Home
+Coming Soon!
 {% endblock %}
 {% block body %}
+<style>
+    .banner {
+        display: flex;
+        justify-content: center;
+        height: 50vh;
+    }
+
+    .banner img {
+        height: 100%;
+    }
+</style>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand mb-1 h1" href="#">
-            <img src="{{ url_for('static' , filename='images/logo.svg')}}" alt="" width="35" height="28" class="d-inline-block align-text-top">
+            <img src="{{ url_for('static' , filename='images/logo.svg')}}" alt="" width="35" height="28"
+                class="d-inline-block align-text-top">
             Examica
-          </a>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -16,7 +28,7 @@ Home
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/features">Features</a>
@@ -35,8 +47,11 @@ Home
 <main>
     <div>
         <div class="container text-center py-5">
-            <h1 class="display-4">👋 Hellow, Students</h1>
-            <h3 class="">Beware.. you can not cheat us anymore!</h3>
+            <h1 class="display-4 text-danger">We are working on it!</h1>
+            <h4 class="my-4 muted">Thank you for your interest! We won't keep you waiting for too long.</h4>
+            <div class="banner">
+                <img src="{{ url_for('static' , filename='images/coming soon.png')}}" alt="" srcset="">
+            </div>
         </div>
     </div>
 </main>

@@ -1,7 +1,7 @@
 from datetime import datetime
 from flask import Flask, render_template
 from admin import admin
-from entity import student, faculty
+from actors import student, faculty
 app = Flask(__name__)
 app.register_blueprint(admin)
 app.register_blueprint(student)
@@ -22,6 +22,15 @@ def not_found(e):
 def index():
     return render_template("index.html");
 
+@app.route("/features")
+def features():
+    return render_template("comingsoon.html")
+@app.route("/pricing")
+def pricing():
+    return render_template("comingsoon.html")
+@app.route("/blogs")
+def blogs():
+    return render_template("comingsoon.html")
 @app.route("/demo")
 def demo():
     return render_template("demo.html")
