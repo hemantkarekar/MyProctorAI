@@ -3,5 +3,41 @@
 Home
 {% endblock %}
 {% block body %}
-Home Page
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand mb-1 h1" href="#">
+            <img src="{{ url_for('static' , filename='images/logo.svg')}}" alt="" width="35" height="28" class="d-inline-block align-text-top">
+            Examica
+          </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/features">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pricing">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blogs">Blogs</a>
+                </li>
+            </ul>
+            <a class="navbar-text" href="/demo">Have A Demo</a>
+        </div>
+    </div>
+</nav>
+<main>
+    <div>
+        <div class="container text-center py-5">
+            <h1 class="display-4">👋 Hellow, Students</h1>
+            <h3 class="">Beware.. you can not cheat us anymore!</h3>
+        </div>
+    </div>
+</main>
 {% endblock %}

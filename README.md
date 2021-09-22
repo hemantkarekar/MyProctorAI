@@ -8,7 +8,7 @@
 
 [Features](#features)
 
-[Developer's Guide](#developers_guide)
+[Developer's Guide](#developers-guide)
 
 ## Introduction
 
@@ -29,8 +29,11 @@ The primary aim of this project is - **to make a demo of examination platform wh
 5. Run `Set-ExecutionPolicy unrestricted`, if it throws an error, run the same command in Admin PowerShell, and when prompted press `A`.
 6. 🔸 Run `.\env\Scripts\activate.ps1` to enable virtualenv.
 7. Run `pip install flask`.
+8. Run `export FLASK_ENV=development` to change the environment to development.
 
 ## 🔹 Important Code Blocks
+
+Blueprint Code Block
 
 ```python
 from flask import Blueprint, render_template

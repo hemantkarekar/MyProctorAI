@@ -1,0 +1,105 @@
+{% extends 'base_platform.html' %}
+{% block title %}
+Home
+{% endblock %}
+{% block body %}
+<div class="d-flex">
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
+        style="width: 280px; user-select: auto; height: 100vh;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+            style="user-select: auto;">
+            <svg class="bi me-2" width="40" height="32" style="user-select: auto;">
+                <use xlink:href="#bootstrap" style="user-select: auto;"></use>
+            </svg>
+            <span class="fs-4" style="user-select: auto;">👋 Student</span>
+        </a>
+        <hr style="user-select: auto;">
+        <ul class="nav nav-pills flex-column mb-auto" style="user-select: auto;">
+            <!-- <li class="nav-item" style="user-select: auto;">
+            <a href="#" class="nav-link active" aria-current="page" style="user-select: auto;">
+                <svg class="bi me-2" width="16" height="16" style="user-select: auto;" id="home" viewBox="0 0 16 16">
+                    <path
+                        d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z">
+                    </path>
+                </svg>
+                Home
+            </a>
+        </li> -->
+            <li style="user-select: auto;">
+                <a href="#" class="nav-link active text-white" style="user-select: auto;">
+                    <svg class="bi me-2" width="16" height="16" style="user-select: auto;" id="home"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z">
+                        </path>
+                        <path fill-rule="evenodd"
+                            d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z">
+                        </path>
+                    </svg>
+                    Dashboard
+                </a>
+            </li>
+            <li style="user-select: auto;">
+                <a href="#" class="nav-link text-white" style="user-select: auto;">
+                    <svg class="bi me-2" width="16" height="16" style="user-select: auto;" id="home"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z">
+                        </path>
+                    </svg>
+                    Orders
+                </a>
+            </li>
+            <li style="user-select: auto;">
+                <a href="#" class="nav-link text-white" style="user-select: auto;">
+                    <svg class="bi me-2" width="16" height="16" style="user-select: auto;" id="home"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z">
+                        </path>
+                    </svg>
+                    Products
+                </a>
+            </li>
+            <li style="user-select: auto;">
+                <a href="#" class="nav-link text-white" style="user-select: auto;">
+                    <svg class="bi me-2" width="16" height="16" style="user-select: auto;" id="home"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z">
+                        </path>
+                    </svg>
+                    Customers
+                </a>
+            </li>
+        </ul>
+        <hr style="user-select: auto;">
+        <div class="dropdown" style="user-select: auto;">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false" style="user-select: auto;">
+                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"
+                    style="user-select: auto;">
+                <strong style="user-select: auto;">mdo</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1"
+                style="user-select: auto;">
+                <li style="user-select: auto;"><a class="dropdown-item" href="#" style="user-select: auto;">New
+                        project...</a></li>
+                <li style="user-select: auto;"><a class="dropdown-item" href="#" style="user-select: auto;">Settings</a>
+                </li>
+                <li style="user-select: auto;"><a class="dropdown-item" href="#" style="user-select: auto;">Profile</a>
+                </li>
+                <li style="user-select: auto;">
+                    <hr class="dropdown-divider" style="user-select: auto;">
+                </li>
+                <li style="user-select: auto;"><a class="dropdown-item" href="#" style="user-select: auto;">Sign out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="p-3">
+        Hello
+    </div>
+</div>
+
+{% endblock %}
