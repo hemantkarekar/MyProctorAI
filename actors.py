@@ -10,6 +10,7 @@ def student_index():
 def student_exams():
     return render_template("student_exams.html")
 
+
 faculty = Blueprint("faculty",__name__, static_folder="static", template_folder="templates/faculty", url_prefix="/faculty")
 
 @faculty.route("/home")

@@ -31,6 +31,12 @@ def pricing():
 @app.route("/blogs")
 def blogs():
     return render_template("comingsoon.html")
+
+@app.route("/student/<username>")
+@app.route("/faculty/<username>")
+def user(username):
+    return render_template("profile.html", username=username)
+
 @app.route("/demo")
 def demo():
     return render_template("demo.html")
