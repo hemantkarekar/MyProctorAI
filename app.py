@@ -1,5 +1,6 @@
 from datetime import datetime
 from flask import Flask, render_template
+from flask_mysqldb import MySQL
 from flask_sqlalchemy import SQLAlchemy
 from admin import admin
 from actors import student, faculty
@@ -7,16 +8,25 @@ from actors import student, faculty
 app = Flask(__name__)
 
 """ DATABASE """
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////temp/examapp.db"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-
-class ExamApp(db.Model):
-    uid = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String(200), nullable=False)
-
-    def __repr__(self) -> str:
-        return f"{self.uid}"
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'test'
+ 
+mysql = MySQL(app)
+ 
+#Creating a connection cursor
+cursor = mysql.connection.cursor()
+ 
+#Executing SQL Statements
+cursor.execute(''' CREATE TABLE testdb(name, downloads) ''')
+cursor.execute(''' INSERT INTO testdb VALUES(Hemant,12) ''')
+ 
+#Saving the Actions performed on the DB
+mysql.connection.commit()
+ 
+#Closing the cursor
+cursor.close()
 
 app.register_blueprint(admin)
 app.register_blueprint(student)
