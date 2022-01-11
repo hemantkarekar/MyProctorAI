@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="'css/style.css'">
+    <link rel="stylesheet" href="css/style.min.css">
 
     <title>MyProctorAI</title>
   </head>
@@ -43,26 +43,45 @@
         </div>
     </nav>
     <main>
-        <div>
+        <section>
+            <div class="container py-3">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="text-content">
+                            <div class="title">
+                                <h1>MyProctorAI</h1>
+                            </div>
+                            <div class="desc">
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum!</p>
+                                <a href="" class="btn btn-primary">Request A Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="media-content">
+                            <div class="wrap">
+                                <picture>
+                                    <source srcset="images/landing.png">
+                                    <img src="images/landing.png" alt="">
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
             <div class="container text-center py-5">
                 <h1 class="display-4">👋 Hellow, Students</h1>
                 <h3 class="">Beware.. you can not cheat us anymore!</h3>
             </div>
-            <div class="container bg-dark">
-                <div class="row">
-                    <div class="col-6"></div>
-                    <div class="col-6">
-                        <img src="images/landing.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
+        </section>
     </main>
     <footer>
         <div class="bg-light pt-4 pb-3">
-            <div class="container text-center">
-                <h2>Copyright 2022. All Rights Reserved.</h2>
-                <h4 class="py-2">Made with ❤ by <strong>Hemant Karekar</strong></h4>
+            <div class="container text-center text-muted">
+                <p>Copyright 2022. All Rights Reserved.</p>
+                <p class="py-2">Made with <span class="text-danger">❤</span> by <a href="" class="text-decoration-none">Hemant Karekar</a></p>
             </div>
         </div>
     </footer>
