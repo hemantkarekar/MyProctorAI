@@ -26,4 +26,14 @@ section{
       }
     }
   }
+  &.visions{
+    .text-content{
+      padding: 5% 0;
+      .title{
+        h1{
+          font-size: 4vw;
+        }
+      }
+    }
+  }
 }
