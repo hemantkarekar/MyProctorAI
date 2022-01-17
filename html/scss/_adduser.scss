@@ -4,7 +4,7 @@ main.form-signin{
   width: 100%;
   .form-content{
     width: 400px;
-    height: 100vh;
-    padding: 5% 20px;
+    min-height: 100vh;
+    padding: 0 20px;
   }
 }
