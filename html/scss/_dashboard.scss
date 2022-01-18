@@ -5,6 +5,7 @@ body {
   header {
     $header-width: 300px;
     height: 100vh;
+    overflow-y: scroll;
     width: $header-width;
 
     nav.sidebar {
