@@ -34,8 +34,15 @@ body {
 
 main {
   flex: 1;
+  section.body{
+    min-height: 80vh;
+    .exam-policy{
+      width: 70%;
+      margin: 0 auto;
+    }
+  }
+  footer {
+    width: 100%;
+  }
 }
 
-footer {
-  width: 100%;
-}
