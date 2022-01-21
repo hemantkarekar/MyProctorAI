@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% block title %}
+MyProctorAI
+{% endblock %}
+{% block body %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand mb-1 h1" href="#">
+            <img src="{{ url_for('static' , filename='images/logo.svg')}}" alt="" width="35" height="28" class="d-inline-block align-text-top">
+            MyProctorAI
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="features.html">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pricing.html">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="blogs.html">Blogs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="blogs.html">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="blogs.html">FAQ</a>
+                </li>
+            </ul>
+            <a class="navbar-text btn btn-primary text-white mx-2" href="/user/register">Login | Register</a>
+            <a class="navbar-text btn btn-primary text-white" href="/demo">Request A Demo</a>
+        </div>
+    </div>
+</nav>
+<main>
+    <section>
+        <div class="container py-3">
+            <div class="row">
+                <div class="col-6">
+                    <div class="text-content">
+                        <div class="title">
+                            <h1>MyProctorAI</h1>
+                            <h3>Exam Security, Done Right</h3>
+                        </div>
+                        <div class="desc">
+                            <p>
+                                Online Proctoring to Advance your learning and testing program. <br>
+                                Validate Knowledge. Reduce Costs. Expand Access
+                            </p>
+                            <a href="" class="btn btn-primary">Request A Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="media-content">
+                        <div class="wrap">
+                            <picture>
+                                <source srcset="{{ url_for('static' , filename='images/landing.png')}}">
+                                <img src="{{ url_for('static' , filename='images/landing.png')}}" alt="">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container text-center py-5">
+            <h1 class="display-4">👋 Hellow, Students</h1>
+            <h3 class="">Beware.. you can not cheat us anymore!</h3>
+        </div>
+    </section>
+    <section class="visions">
+        <div class="container py-3">
+            <div class="row">
+                <div class="col-md-6">
+
+                </div>
+                <div class="col-md-6">
+                    <div class="text-content">
+                        <div class="title">
+                            <h1 class="display-5"><span>🎯</span> Mission</h1>
+                        </div>
+                        <p>
+                            Making green exam assessment reach last mile across globe.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-content">
+                        <div class="title">
+                            <h1 class="display-5"><span>👁</span> Vision</h1>
+                        </div>
+                        <p>We believe - <strong>"Future of the world starts in a Classroom"</strong></p>
+                        <p>Our vision is to Invent and Develop future ready Edu-tech Solutions featuring simple
+                            functionalities.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                </div>
+                <div class="col-md-6">
+
+                </div>
+                <div class="col-md-6">
+                    <div class="text-content">
+                        <div class="title">
+                            <h1 class="display-5"><span>💻</span> Exam Proctoring</h1>
+                        </div>
+                        <p>
+                            An all-inclusive remote monitoring solution, including Image verification and computer
+                            restrictions.
+                        </p>
+                        <ul>
+                            <li>Automated Proctoring</li>
+                            <li>Live Proctoring</li>
+                            <li>Professional Review</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-content">
+                        <div class="title">
+                            <h1 class="display-5"><span>👁</span> Content Protection</h1>
+                        </div>
+                        <p><strong>MyProctorAI</strong> ensures exam integrity by preventing internet navigation, use of
+                            mobile devices, screen captures, printing, or sharing.</p>
+                        <ul>
+                            <li>Distribution Prevention</li>
+                            <li>Copy/ Print/ Download Restriction</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                </div>
+                <div class="col-md-6">
+
+                </div>
+                <div class="col-md-6">
+                    <div class="text-content">
+                        <div class="title">
+                            <h1 class="display-5"><span>💻</span> Distribution Prevention</h1>
+                        </div>
+                        <p>
+                            <strong>MyProctorAI</strong> prevents test distribution through a host of adjustable
+                            settings to restrict the ability to copy and paste, print, download or make screen captures
+                            while automatically clearing caches and disabling extensions during the assessment to keep
+                            exam content secure.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-content">
+                        <div class="title">
+                            <h1 class="display-5"><span>👨</span> Image Verification</h1>
+                        </div>
+                        <p><strong>MyProctorAI</strong> assures the Identification is captured, analyzed, and verified,
+                            then only allowed to log in.</p>
+                        <ul>
+                            <li>Advanced Facial Detection Technology</li>
+                            <li>Automated Verification</li>
+                            <li>Live Image Verification</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

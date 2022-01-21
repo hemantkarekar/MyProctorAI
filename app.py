@@ -1,9 +1,15 @@
 from datetime import datetime
-from flask import Flask, render_template
+from flask import Flask, Blueprint, render_template
 from admin import admin
 from actors import student, faculty
+from jinja2 import TemplateNotFound
+# from pages import page
+
+
 
 app = Flask(__name__)
+
+app.register_blueprint(student,url_prefix="/student")
 
 """ DATE """
 @app.context_processor
@@ -13,16 +19,27 @@ def now():
 """ ERROR HANDLERS """
 @app.errorhandler(404)
 def not_found(e):
-    return render_template("404.html")
+    return render_template("errors/404.html")
 
 """ ROUTES """
 @app.route("/")
 def index():
-    return render_template("index.html");
+    return render_template("pages/index.html")
+@app.route("/<page>")
+def show(page):
+    return render_template(f"pages/{page}.html")
 
-# @app.route("/features")
-# def features():
-#     return render_template("comingsoon.html")
+
+@app.route("/user/add")
+@app.route("/user/register")
+def user_add():
+    return render_template("pages/adduser.html");
+
+@app.route("/user/login")
+def user_login():
+    return render_template("pages/login.html");
+
+
 # @app.route("/pricing")
 # def pricing():
 #     return render_template("comingsoon.html")
@@ -36,7 +53,7 @@ def index():
 # def register():
 #     return render_template("comingsoon.html")
 
-@app.route("/student/<username>")
+@student.route("/<username>")
 @app.route("/faculty/<username>")
 def user(username):
     return render_template("profile.html", username=username)
