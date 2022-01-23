@@ -1,10 +1,12 @@
 from flask import Blueprint, render_template
-
+""" Admin Blueprint """
 admin = Blueprint("admin",__name__, static_folder="static", template_folder="templates/admin", url_prefix="/admin")
 
 @admin.route("/")
 def admin_index():
-    return render_template("faculty_index.html")
+    return render_template("professor_index.html")
+
+""" Student """
 student = Blueprint("student",__name__, static_folder="static", template_folder="templates/student", url_prefix="/student")
 
 @student.route("/<username>")
@@ -20,4 +22,8 @@ faculty = Blueprint("faculty",__name__, static_folder="static", template_folder=
 
 @faculty.route("/")
 def faculty_index():
-    return render_template("faculty_index.html")
+    return render_template("professor_index.html")
+
+@faculty.route("/<username>")
+def student_index(username):
+    return render_template("professor_index.html", username = username)

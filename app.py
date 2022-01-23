@@ -1,15 +1,23 @@
 from datetime import datetime
+import imp
 from flask import Flask, Blueprint, render_template
 from admin import admin
 from actors import student, faculty
-from jinja2 import TemplateNotFound
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 # from pages import page
 
 
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/test'
+db = SQLAlchemy(app)
+class Testdb(db.Model):
+    name = db.Column(db.String(255), primary_key=True)
+    downloads = db.Column(db.String(255))
 
 app.register_blueprint(student,url_prefix="/student")
+app.register_blueprint(faculty,url_prefix="/faculty")
 
 """ DATE """
 @app.context_processor
@@ -53,7 +61,6 @@ def user_login():
 # def register():
 #     return render_template("comingsoon.html")
 
-@student.route("/<username>")
 @app.route("/faculty/<username>")
 def user(username):
     return render_template("profile.html", username=username)
