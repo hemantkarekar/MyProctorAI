@@ -1,29 +1,27 @@
-from flask import Blueprint, render_template
-""" Admin Blueprint """
-admin = Blueprint("admin",__name__, static_folder="static", template_folder="templates/admin", url_prefix="/admin")
+from flask import *
 
-@admin.route("/")
-def admin_index():
-    return render_template("professor_index.html")
+student = Blueprint("student",__name__, static_folder="static", template_folder="templates/student")
 
-""" Student """
-student = Blueprint("student",__name__, static_folder="static", template_folder="templates/student", url_prefix="/student")
+@student.route("/<username>/dashboard")
+def student_index(username = session["username"]):
+    if(session):
+        return render_template("index.html", username = username)
+    else:
+        return redirect("/login");
 
-@student.route("/<username>")
-def student_index(username):
-    return render_template("student_index.html", username = username)
+faculty = Blueprint("faculty",__name__, static_folder="static", template_folder="templates/faculty")
 
-@student.route("/exams")
-def student_exams():
-    return render_template("student_exams.html")
+@faculty.route("/<username>/dashboard")
+def faculty_index(username = session["username"]):
+    if(session):
+        return render_template("index.html", username = username)
+    else:
+        return redirect("/login");
 
-
-faculty = Blueprint("faculty",__name__, static_folder="static", template_folder="templates/faculty", url_prefix="/faculty")
-
-@faculty.route("/")
-def faculty_index():
-    return render_template("professor_index.html")
-
-@faculty.route("/<username>")
-def student_index(username):
-    return render_template("professor_index.html", username = username)
+admin = Blueprint("faculty",__name__, static_folder="static",  template_folder="templates/faculty")
+@admin.route("/<username>/dashboard")
+def admin_index(username = session["username"]):
+    if(session):
+        return render_template("index.html", username = username)
+    else:
+        return redirect("/login");

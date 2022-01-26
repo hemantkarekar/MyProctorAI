@@ -4,8 +4,8 @@ Register • MyProctorAI
 {% endblock %}
 {% block body %}
   <main class="form-signin">
-    <div class="container bg-light form-content">
-      <form action="verifyOTP.html">
+    <div class="container bg-light form-content py-5">
+      <form action="/accounts/signup/">
         <div class="brand text-center">
           <img class="mb-4" src="{{ url_for('static' , filename='images/logo.svg')}}" alt="" width="72" height="57">
         </div>
@@ -30,7 +30,7 @@ Register • MyProctorAI
           </select>
           <label for="floatingSelect">Select User Type</label>
         </div>
-        <button type="button" class="mb-3 btn btn-sm btn-outline-primary">Capture Image</button>
+        <!-- <button type="button" class="mb-3 btn btn-sm btn-outline-primary">Capture Image</button> -->
         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
       </form>
       <div class="mt-3">

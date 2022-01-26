@@ -1,0 +1,46 @@
+{% extends 'base_platform.html' %}
+{% block title %}
+MyProctorAI {{username}}
+{% endblock %}
+{% block body %}
+<header class="bg-dark p-3">
+  <div class="logo"><img src="" alt="" height="60" width="60" alt="Dashboard&nbsp;Logo" title="Dashboard&nbsp;Logo">
+  </div>
+  <nav class="sidebar mt-3">
+    <ul class="nav flex-column pt-3 pt-md-0">
+      <li class="mb-3">
+      <li class="mb-3"><a href="">Create Exam</a></li>
+      <div class="multi-level collapse " role="list" id="submenu-components" aria-expanded="true">
+        <ul class="flex-column nav">
+          <li class="mb-3"><a href="">Objective</a></li>
+          <li class="mb-3"><a href="">Subjective</a></li>
+          <li class="mb-3"><a href="">Practical</a></li>
+        </ul>
+      </div>
+      </li>
+      <li class="mb-3"><a href="">Generate Questions</a></li>
+      <li class="mb-3"><a href="">View Questions</a></li>
+      <li class="mb-3"><a href="">Exam History</a></li>
+      <li class="mb-3"><a href="">Student Monitoring</a></li>
+      <li class="mb-3"><a href="">Publish Results</a></li>
+      <hr class="mb-3">
+      <li class="mb-3"><a href="">Payments</a></li>
+      <li class="mb-3"><a href="">Report Problems</a></li>
+      <li class="mb-3"><a href="">Change Password</a></li>
+      <li class="mb-3"><a class="btn w-100 btn-danger" href="">Logout</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+
+  <footer>
+    <div class="bg-light pt-4 pb-3">
+      <div class="container text-center text-muted">
+        <p>Copyright 2022. All Rights Reserved.</p>
+        <p class="py-2">Made with <span class="text-danger">❤</span> by <a href="" class="text-decoration-none">Hemant
+            Karekar</a></p>
+      </div>
+    </div>
+  </footer>
+</main>
+{% endblock %}

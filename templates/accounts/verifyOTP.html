@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+OTP Verification • MyProctorAI
+{% endblock %}
+{% block body %}
+  <main class="form-signin">
+    <div class="container bg-light form-content py-5">
+      <form action="">
+        <div class="brand text-center">
+          <img class="mb-4" src="{{ url_for('static' , filename='images/logo.svg')}}" alt="" width="72" height="57">
+        </div>
+        <h1 class="h3 mb-3 text-center">Verify OTP!</h1>
+        <div class="form-floating mb-2">
+          <input type="email" class="form-control" disabled value="he*****@****" id="floatingEmail" placeholder="name@example.com">
+          <label for="floatingEmail">Enter Recovery Email</label>
+        </div>
+        <p class="mt-3">An OTP with 6 digit verification code has been sent to the email he*****@****.</p>
+        <div class="form-floating mb-2">
+          <input type="text" class="form-control" id="floatingOTP" placeholder="name@example.com">
+          <label for="floatingOTP">Enter 6-digit OTP</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Verify</button>
+      </form>
+      <div class="pt-4 pb-3">
+        <div class="container text-center text-muted">
+          <p>Copyright 2022. All Rights Reserved.</p>
+          <p class="py-2">Made with <span class="text-danger">❤</span> by <a href="" class="text-decoration-none">Hemant
+              Karekar</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+  {% endblock %}

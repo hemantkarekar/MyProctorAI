@@ -1,23 +1,34 @@
 from datetime import datetime
-import imp
-from flask import Flask, Blueprint, render_template
-from admin import admin
-from actors import student, faculty
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-# from pages import page
+from tkinter import font
+from urllib import request
+from flask import * 
+# from admin import admin
+# from actors import student, faculty
+from accounts import accounts
+from flask_sqlalchemy import *
 
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/test'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/proctorai_website'
 db = SQLAlchemy(app)
-class Testdb(db.Model):
-    name = db.Column(db.String(255), primary_key=True)
-    downloads = db.Column(db.String(255))
+""" 
+id 50, name 200, username 100, email 200, password 100, user_type 50, credits int11, user_status 50, registered_on 50
+"""
+class Users(db.Model):
+    id = db.Column(db.String(50), primary_key=True)
+    name = db.Column(db.String(200))
+    username = db.Column(db.String(100))
+    email = db.Column(db.String(200))
+    password = db.Column(db.String(100))
+    user_type = db.Column(db.String(50))
+    user_status = db.Column(db.String(50))
+    registered_on = db.Column(db.String(50))
+    credits = db.Column(db.Integer)
 
-app.register_blueprint(student,url_prefix="/student")
-app.register_blueprint(faculty,url_prefix="/faculty")
+# app.register_blueprint(student)
+# app.register_blueprint(faculty)
+app.register_blueprint(accounts)
 
 """ DATE """
 @app.context_processor
@@ -33,20 +44,47 @@ def not_found(e):
 @app.route("/")
 def index():
     return render_template("pages/index.html")
+
 @app.route("/<page>")
 def show(page):
     return render_template(f"pages/{page}.html")
 
+@app.route("/register")
+def register():
+    return render_template("pages/adduser.html")
+    
+@app.route("/login", methods=["POST", "GET"])
+def login():
+    if request.method == "POST":
+        session.permanent = True
+        email = request.form["email"]
+        password = request.form["password"]
+        found_user = Users.query.filter_by(email = email).first()
+        if found_user.password == password:
+            session["username"] = found_user.username
+            session["email"] = found_user.email
+            session["user_type"] = found_user.user_type
+            # flash(f"{found_user.username} is Found")
+            return redirect(f"/{session['username']}/dashboard")
+        else:
+            return render_template("pages/login.html")
+    elif request.method =="GET":
+        if session["username"]:
+            return redirect(f"/{session['username']}/dashboard")
+        else:
+            return render_template("pages/login.html")
+            
+@app.route("/logout")
+def logout():
+    session.clear();
+    return redirect("login")
 
-@app.route("/user/add")
-@app.route("/user/register")
-def user_add():
-    return render_template("pages/adduser.html");
-
-@app.route("/user/login")
-def user_login():
-    return render_template("pages/login.html");
-
+@app.route("/<username>/dashboard")
+def dashboard(username):
+    if session:
+        return render_template(f"{session['user_type'].lower()}/index.html");
+    else:
+        return redirect("login")
 
 # @app.route("/pricing")
 # def pricing():
@@ -54,20 +92,21 @@ def user_login():
 # @app.route("/blogs")
 # def blogs():
 #     return render_template("comingsoon.html")
+
 # @app.route("/login")
 # def login():
 #     return render_template("comingsoon.html")
 # @app.route("/register")
 # def register():
 #     return render_template("comingsoon.html")
-
-@app.route("/faculty/<username>")
-def user(username):
-    return render_template("profile.html", username=username)
-
-@app.route("/demo")
-def demo():
-    return render_template("demo.html")
+@app.route("/<username>/demo")
+def demo(username, usertype="Admin"):
+    if(usertype=="Admin"):
+        return render_template("demo.html", username = username, usertype = usertype)
 
 if __name__ == "__main__":
+    app.secret_key = 'super secret key'
+    app.config['SESSION_TYPE'] = 'filesystem'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+    # session.init_app(app)
     app.run(debug=True)
