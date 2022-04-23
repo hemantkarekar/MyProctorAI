@@ -1,0 +1,27 @@
+{% extends 'base_platform.html' %}
+{% block title %}
+{{session['username']}} • Exams
+{% endblock %}
+{% block body %}
+{% include './student/navbar.html' %}
+<main style="overflow-y: scroll !important ;">
+    {% if session['blacklisted_processes'] %}
+        <p>Unauthorised Processes or Applications instances detected. Please Shut them down and return to this window!</p>
+    {% else%}
+        <script>alert("{{session['blacklisted_processes']}}");</script>
+    {% endif %}
+
+    <div class="py-3">
+        <div class="col-lg-8  offset-lg-2">
+            <h3 class="mt-5">Live Streaming</h3>
+            <img src="{{ url_for('video_feed') }}" width="500">
+            <?php 
+            echo shell_exec("python script.py");
+            ?>
+        </div>
+    </div>
+    {% include './footer.html' %}    
+</main>
+</div>
+
+{% endblock %}

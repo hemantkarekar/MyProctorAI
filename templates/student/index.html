@@ -1,33 +1,10 @@
 {% extends 'base_platform.html' %}
 {% block title %}
-MyProctorAI {{username}}
+MyProctorAI • {{session['username']}}
 {% endblock %}
 {% block body %}
-    <header class="bg-dark p-3">
-        <div class="logo"><img src="" alt="" height="60" width="60" alt="Dashboard&nbsp;Logo" title="Dashboard&nbsp;Logo"></div>
-        <nav class="sidebar mt-3">
-            <ul class="border-light">
-                <li class="mb-3"><a href="dashboard">Dashboard</a></li>
-                <li class="mb-3"><a href="exams">Give Exam</a></li>
-                <li class="mb-3"><a href="exams#history">Exam History</a></li>
-                <li class="mb-3"><a href="exams">Results</a></li>
-                <hr class="mb-3">
-                <li class="mb-3"><a href="/payments">Payments</a></li>
-                <li class="mb-3"><a href="/report-problem">Report Problems</a></li>
-                <li class="mb-3"><a href="/accounts/password/reset">Change Password</a></li>
-                <li class="mb-3"><a class="btn w-100 btn-danger" href="/logout">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-
-        <footer>
-            <div class="bg-light pt-4 pb-3">
-                <div class="container text-center text-muted">
-                    <p>Copyright 2022. All Rights Reserved.</p>
-                    <p class="py-2">Made with <span class="text-danger">❤</span> by <a href="" class="text-decoration-none">Hemant Karekar</a></p>
-                </div>
-            </div>
-        </footer>
-    </main>
+{% include './student/navbar.html' %}
+<main>
+    {% include './footer.html' %}
+</main>
 {% endblock %}
