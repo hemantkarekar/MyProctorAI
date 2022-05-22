@@ -102,9 +102,9 @@ def login():
         else:
             return render_template("pages/login.html")
     elif request.method =="GET":
-        if session:
-            return redirect(f"/{session['username']}/dashboard")
-        else:
+        # if session:
+        #     return redirect(f"/{session['username']}/dashboard")
+        # else:
             return render_template("pages/login.html")
             
 @app.route("/logout")
