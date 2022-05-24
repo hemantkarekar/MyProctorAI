@@ -26,11 +26,44 @@
     <button id="btn-release-microphone" disabled>Release Microphone</button>
     <button id="btn-download-recording" disabled>Download</button>
 
+    <!-- <button id="btn-start-recording">Start Recording</button>
+    <button id="btn-stop-recording" disabled>Stop Recording</button> -->
     <hr>
-    <div><audio controls autoplay playsinline></audio></div>
+    <div>
+        <audio controls autoplay playsinline></audio>
+        <hr>
+        <video controls autoplay playsinline></video>
+    </div>
 
     <script src="{{url_for('static',filename='js/RecordRTC.min.js')}}"></script>
     <script>
+        var video = document.querySelector('video');
+
+        function captureCamera(callback) {
+            navigator.mediaDevices.getUserMedia({
+                audio: true,
+                video: true
+            }).then(function (camera) {
+                callback(camera);
+            }).catch(function (error) {
+                alert('Unable to capture your camera. Please check console logs.');
+                console.error(error);
+            });
+        }
+
+        function stopVideoRecordingCallback() {
+            video.src = video.srcObject = null;
+            video.muted = false;
+            video.volume = 1;
+            video.src = URL.createObjectURL(videoRecorder.getBlob());
+
+            videoRecorder.camera.stop();
+            videoRecorder.destroy();
+            videoRecorder = null;
+        }
+
+        var videoRecorder; // globally accessible
+
         var audio = document.querySelector('audio');
 
         function captureMicrophone(callback) {
@@ -106,7 +139,7 @@
             .msSaveBlob);
         var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-        var recorder; // globally accessible
+        var audioRecorder; // globally accessible
         var microphone;
 
         var btnStartRecording = document.getElementById('btn-start-recording');
@@ -118,6 +151,23 @@
             this.disabled = true;
             this.style.border = '';
             this.style.fontSize = '';
+
+            captureCamera(function (camera) {
+                video.muted = true;
+                video.volume = 0;
+                video.srcObject = camera;
+
+                videoRecorder = RecordRTC(camera, {
+                    type: 'video'
+                });
+
+                videoRecorder.startRecording();
+
+                // release camera on stopRecording
+                videoRecorder.camera = camera;
+
+                document.getElementById('btn-stop-recording').disabled = false;
+            });
 
             if (!microphone) {
                 captureMicrophone(function (mic) {
@@ -134,7 +184,8 @@
                         btnStartRecording.style.fontSize = '150%';
 
                         alert(
-                            'Please click startRecording button again. First time we tried to access your microphone. Now we will record it.');
+                            'Please click startRecording button again. First time we tried to access your microphone. Now we will record it.'
+                        );
                         return;
                     }
 
@@ -169,14 +220,14 @@
                 options.numberOfAudioChannels = 2;
             }
 
-            if (recorder) {
-                recorder.destroy();
-                recorder = null;
+            if (audioRecorder) {
+                audioRecorder.destroy();
+                audioRecorder = null;
             }
 
-            recorder = RecordRTC(microphone, options);
+            audioRecorder = RecordRTC(microphone, options);
 
-            recorder.startRecording();
+            audioRecorder.startRecording();
 
             btnStopRecording.disabled = false;
             btnDownloadRecording.disabled = true;
@@ -184,7 +235,8 @@
 
         btnStopRecording.onclick = function () {
             this.disabled = true;
-            recorder.stopRecording(stopRecordingCallback);
+            videoRecorder.stopRecording(stopRecordingCallback);
+            audioRecorder.stopRecording(stopVideoRecordingCallback);
         };
 
         btnReleaseMicrophone.onclick = function () {
@@ -203,16 +255,16 @@
 
         btnDownloadRecording.onclick = function () {
             this.disabled = true;
-            if (!recorder || !recorder.getBlob()) return;
+            if (!audioRecorder || !audioRecorder.getBlob()) return;
 
             if (isSafari) {
-                recorder.getDataURL(function (dataURL) {
+                audioRecorder.getDataURL(function (dataURL) {
                     SaveToDisk(dataURL, getFileName('mp3'));
                 });
                 return;
             }
 
-            var blob = recorder.getBlob();
+            var blob = audioRecorder.getBlob();
             var file = new File([blob], getFileName('mp3'), {
                 type: 'audio/mp3'
             });
