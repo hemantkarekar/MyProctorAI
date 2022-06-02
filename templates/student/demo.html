@@ -15,29 +15,68 @@
 
     <div class="py-3">
         <div class="col-lg-8  offset-lg-2">
-            <h3 class="mt-5">Live Streaming</h3>
-            <!-- <img src="{{ url_for('video_feed') }}" width="500"> -->
+            <h3 class="mt-5">Live Recording is ON!</h3>
         </div>
     </div>
 
 
-    <button id="btn-start-recording">Start Recording</button>
-    <button id="btn-stop-recording" disabled>Stop Recording</button>
-    <button id="btn-release-microphone" disabled>Release Microphone</button>
-    <button id="btn-download-recording" disabled>Download</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Q.1 Lorem ipsum dolor sit amet consectetur adipisicing elit. At, ipsam.</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Default checked radio
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Default checked radio
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Default checked radio
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Default checked radio
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit-buttons py-3">
+                    <button class="btn btn-primary" id="btn-start-recording">Start Exam</button>
+                    <button class="btn btn-danger" id="btn-stop-recording" disabled>Stop Exam</button>
+                    <button class="btn btn-primary" style="display: none;" id="btn-release-microphone" disabled>Release Microphone</button>
+                    <button class="btn btn-secondary" id="btn-download-recording" disabled>Download</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <!-- <img src="{{ url_for('video_feed') }}" width="500"> -->
+                <video class="w-100" controls autoplay playsinline></video>
+                <!-- <audio controls autoplay playsinline></audio> -->
+            </div>
+        </div>
 
-    <!-- <button id="btn-start-recording">Start Recording</button>
+        <!-- <button id="btn-start-recording">Start Recording</button>
     <button id="btn-stop-recording" disabled>Stop Recording</button> -->
-    <hr>
-    <div>
-        <!-- <audio controls autoplay playsinline></audio> -->
-        <hr>
-        <video controls autoplay playsinline></video>
     </div>
 
     <script src="{{url_for('static',filename='js/RecordRTC.min.js')}}"></script>
-    <script src="{{url_for('static',filename='js/RTCAVRecorder.js')}}"></script>
-    
+    <!-- <script src="{{url_for('static',filename='js/RTCCamRecorder.js')}}"></script> -->
+    <!-- <script src="{{url_for('static',filename='js/RTCAudioRecorder.js')}}"></script> -->
+    <script src="{{url_for('static',filename='js/RTCScreenRecorder.js')}}"></script>
+
 
     {% include './footer.html' %}
 </main>
