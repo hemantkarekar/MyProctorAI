@@ -1,22 +1,33 @@
-# 💻 Advanced Anti-Cheating Examination Portal
+# 💻 MyProctorAI - An Online Exam Proctoring Solution
 
-*Last updated on Sept 11, 2019*
+*Last updated on June 02, 2022*
 
 ## Table of Contents
 
 [Introduction](#introduction)
 
-[Features](#features)
+[User Guide](#user-guide)
 
 [Developer's Guide](#developers-guide)
 
+# User Guide
+
 ## Introduction
 
-The primary aim of this project is - **to make a demo of examination platform which is cheating proof to nearly all possibilities.** At the end of this project work, you will be getting a exam portal where no student can cheat in any possible ways.
+In this era of online examination, there are numerous online examination platforms readily available in the market. But the functionality they lack is the proper proctoring system. The MyProctorAI is - ** a demo of proctoring equipped examination platform which is cheating proof to nearly all possibilities.** 
 
 ## Features
 
+This project is equipped with - 
+- Recording real time movement from user's device camera and detecting any suspecious activities that can lead to cheating.
+- Recording the user's audio from your devices audio input and log the records.
+- Recording the user's active screen to check on screen activities happening.
 
+Furthermore, The features which are in development are - 
+- Face Detection Module - To ensure only one candidate is present on the screen.
+- Face Recognition Module - To ensure the allowed candidae is attempting the exam. 
+
+And there are features which I have planned to include, 
 
 # Developer's Guide
 
@@ -30,44 +41,4 @@ The primary aim of this project is - **to make a demo of examination platform wh
 6. 🔸 Run `.\env\Scripts\activate.ps1` to enable virtualenv.
 7. Run `pip install flask`.
 8. Run `export FLASK_ENV=development` to change the environment to development.
-
-## 🔹 Important Code Blocks
-
-Blueprint Code Block
-
-```python
-from flask import Blueprint, render_template
-
-admin = Blueprint("admin",__name__, static_folder="static", template_folder="templates", url_prefix="/admin")
-
-@admin.route("/dashboard")
-@admin.route("/")
-def dashboard():
-    return "<h1>Dashboard</h1>"
-```
-
-```python
-from flask import Flask, render_template
-from admin import admin
-app = Flask(__name__)
-app.register_blueprint(admin)
-
-""" ERROR HANDLERS """
-@app.errorhandler(404)
-def not_found(e):
-    return render_template("404.html")
-
-""" ROUTES """
-@app.route("/")
-def index():
-    return render_template("index.html");
-
-@app.route("/exam")
-def exam():
-    return "<p>Hello, Exam!</p>"
-
-if __name__ == "__main__":
-    app.run(debug=True)
-    
-```
 
